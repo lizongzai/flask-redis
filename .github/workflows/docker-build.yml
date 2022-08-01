@@ -18,8 +18,8 @@ jobs:
         name: Available platforms
         run: echo ${{ steps.buildx.outputs.platforms }}
       -
-        name: build and push
-        run: /
-          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-          docker buildx ls
-          docker image push lizongzai/flask-redis:latest
+        name: dockerhub login
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+      - 
+        name: push to dockerhub
+        run: docker image push lizongzai/flask-redis:latest
